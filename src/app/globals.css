@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "react-datepicker/dist/react-datepicker.css";
 
 :root {
   --background: #ffffff;
@@ -10,6 +11,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+   --color-brand-50:  #f5f7ff;
+  --color-brand-100: #e9eeff;
+  --color-brand-500: #5a67ff;
+  --color-brand-600: #3e49f0;
+  --color-brand-900: #1a1f4d;
+
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+  --radius-xl2: 1.25rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +32,23 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+.react-tel-input .form-control {
+  background-color: #1f2937 !important; /* gray-800 */
+  color: white !important;
+  border: 1px solid #374151 !important; /* gray-700 */
+}
+
+.react-tel-input .flag-dropdown {
+  background-color: #1f2937 !important;
+  border: 1px solid #374151 !important;
+}
+
+.react-tel-input .country-list {
+  background-color: #1f2937 !important;
+  color: white !important;
+}
+
+.react-tel-input .country-list .country {
+  color: white !important;
 }
