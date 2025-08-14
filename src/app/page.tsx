@@ -90,12 +90,7 @@ export default function HomePage() {
                   {v.features?.length ? (
                     <div className="text-sm text-white/60">{v.features.join(" • ")}</div>
                   ) : null}
-                  {v.basePriceEur ? (
-                    <div className="mt-2 font-semibold text-blue-400">
-                      {t("home.fleet.from")} {v.basePriceEur} €
-                    </div>
-                  ) : null}
-                </div>
+                  </div>
               </div>
             ))}
           </div>

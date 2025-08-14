@@ -13,6 +13,40 @@ type Dict = Record<string, string>;
 const dictionaries = {
   /* ========================= TURKISH ========================= */
   tr: {
+
+// Home hero & badges
+"home.hero.title": "Antalya VIP Transfer",
+"home.hero.subtitle": "Havalimanından otele, şehiriçi ve turlarda dakik ve konforlu ulaşım.",
+"home.hero.cta": "Rezervasyon Yap",
+"home.badge.support": "7/24 Destek",
+"home.badge.supportDesc": "WhatsApp ve telefonla anında iletişim.",
+"home.badge.driver": "Profesyonel Şoför",
+"home.badge.driverDesc": "Deneyimli, güler yüzlü ve güvenilir.",
+"home.badge.insured": "Sigortalı Yolculuk",
+"home.badge.insuredDesc": "Araç ve yolcu güvenliği önceliğimiz.",
+"home.badge.ontime": "Zamanında",
+"home.badge.ontimeDesc": "Uçuşunuza göre takip ve zamanında karşılama.",
+// Home services
+"home.svc.title": "Hizmetlerimiz",
+"home.svc.airport": "Havalimanı Transferi",
+"home.svc.hotel": "Otel Transferi",
+"home.svc.city": "Şehiriçi Transfer",
+"home.svc.tour": "Özel Tur ve Gezi",
+// Fleet
+"home.fleet.title": "Araç Filomuz",
+"home.fleet.cta": "Şimdi Rezervasyon",
+
+
+// Step1 (flight info)
+"step1.flightNo": "Uçuş No",
+"step1.terminal": "Terminal",
+// Step4 (extra fields)
+"step4.baggage": "Bagaj adedi",
+"step4.note": "Not",
+"step4.acceptPolicy": "Rezervasyon ve iptal politikasını kabul ediyorum",
+"step4.acceptKvkk": "KVKK/Aydınlatma metnini okudum, onaylıyorum",
+"step4.acceptComms": "Kampanya ve bilgilendirme mesajları almak istiyorum (opsiyonel)",
+
     // Header
     "header.links.services": "Hizmetler",
     "header.links.fleet": "Araç Filosu",
@@ -21,11 +55,7 @@ const dictionaries = {
     "header.cta.book": "Rezervasyon Yap",
 
     // Home (kısa)
-    "home.hero.title": "Antalya’da VIP Transfer",
-    "home.hero.subtitle": "Konforlu, güvenli ve zamanında. Havalimanından otele, şehir içi veya günlük tur.",
-    "home.hero.cta": "Rezervasyona Başla",
     "home.services.title": "Hizmetlerimiz",
-    "home.fleet.title": "Araç Filomuz",
 
     // Footer
     "footer.about": "Antalya’da profesyonel VIP transfer hizmeti. Deneyimli şoförler, sigortalı taşımacılık ve şeffaf fiyat.",
@@ -115,21 +145,86 @@ const dictionaries = {
     "feature.ac": "Klima",
     "feature.water": "İkram Su",
     "feature.luggage": "Bagaj",
+
+    "about.title":"Biz Kimiz?",
+"about.p1":"Sonnenlicht VIP Transfer, Antalya ve çevresinde özel şoförlü transfer hizmeti sunar.",
+"about.p2":"Önceliğimiz; güvenlik, dakiklik ve konfordur. Uçuş takibi yapar, misafirlerimizi zamanında karşılarız.",
+"about.p3":"Kurumsal ve bireysel taleplerde, ihtiyaçlarınıza göre esnek çözümler sunarız.",
+"about.contact":"İletişim",
+"faq.title":"Sık Sorulan Sorular",
+"faq.q1":"Fiyatlara neler dahildir?",
+"faq.a1":"Özel şoför, araç, yakıt ve standart sigorta dahildir. Otopark/özel gişe ücretleri ve ekstra talepler dahil değildir.",
+"faq.q2":"Bebek koltuğu sağlıyor musunuz?",
+"faq.a2":"Evet, 1 adet bebek koltuğu ücretsizdir. Ek koltuk talebinizi rezervasyonda belirtin.",
+"faq.q3":"Uçuşum gecikirse ne olur?",
+"faq.a3":"Uçuş bilgilerini takip ederiz. Gecikmede ek ücret talep etmeyiz, uygun bekleme koşullarını uygularız.",
+"faq.q4":"Ücretlendirme nasıl yapılır?",
+"faq.a4":"Rota ve araç tipine göre belirlenir; onaydan önce toplam tutarı bildiririz.",
+"policies.cancel.title":"İptal Politikası",
+"policies.cancel.intro":"Rezervasyon iptalleri için aşağıdaki koşullar geçerlidir:",
+"policies.cancel.p1":"Transfer saatinden 24 saat öncesine kadar iptaller ücretsizdir.",
+"policies.cancel.p2":"24 saatten daha az sürede yapılan iptallerde ücretin %50’si yansıtılır.",
+"policies.cancel.p3":"No-show durumunda ücretin tamamı tahsil edilir.",
+"policies.cancel.p4":"Değişiklik taleplerini mümkün olduğunca memnuniyetle karşılarız.",
+"policies.cancel.notice":"Bu metin örnek amaçlıdır; sözleşme koşullarınız farklı ise lütfen bize bildirin.",
+"policies.kvkk.title":"KVKK Aydınlatma Metni",
+"policies.kvkk.intro":"Kişisel verilerinizi 6698 sayılı Kanun’a uygun olarak işler ve koruruz.",
+"policies.kvkk.sec1.t":"İşlenen Veri Kategorileri",
+"policies.kvkk.sec1.p":"Kimlik ve iletişim bilgileri, rezervasyon/transfer detayları, fatura ve log kayıtları.",
+"policies.kvkk.sec2.t":"İşleme Amaçları",
+"policies.kvkk.sec2.p":"Hizmetin ifası, rezervasyon yönetimi, faturalama, yasal yükümlülükler ve müşteri ilişkileri.",
+"policies.kvkk.sec3.t":"Saklama Süresi ve Haklarınız",
+"policies.kvkk.sec3.p":"Veriler mevzuattaki sürelerce saklanır. KVKK kapsamındaki erişim/düzeltme/silme haklarına sahipsiniz.",
+"policies.kvkk.notice":"Bu metin bilgilendirme amaçlıdır; güncel sürüm için bizimle iletişime geçin.",
+"header.links.about":"Hakkımızda",
+"header.links.faq":"SSS",
+"header.links.contact":"İletişim",
+"footer.links": "Bağlantılar",   
+"nav.reservation": "Rezervasyon",    
+"nav.about": "Hakkımızda",       
+"nav.faq": "SSS",                
+"nav.cancelPolicy": "İptal Politikası", 
+"nav.privacy": "KVKK / Gizlilik",
+
   },
 
   /* ========================= ENGLISH ========================= */
   en: {
+
+// Home hero & badges
+"home.badge.support": "24/7 Support",
+"home.badge.supportDesc": "Instant contact via WhatsApp & phone.",
+"home.badge.driver": "Pro Drivers",
+"home.badge.driverDesc": "Experienced, friendly and reliable.",
+"home.badge.insured": "Insured Ride",
+"home.badge.insuredDesc": "Vehicle and passenger safety first.",
+"home.badge.ontime": "On Time",
+"home.badge.ontimeDesc": "Flight tracking & punctual pickup.",
+// Home services
+"home.svc.airport": "Airport Transfer",
+"home.svc.hotel": "Hotel Transfer",
+"home.svc.city": "City Transfer",
+"home.svc.tour": "Private Tours",
+// Fleet
+"home.fleet.cta": "Book Now",
+
+
+// Step1 (flight info)
+"step1.flightNo": "Flight No",
+"step1.terminal": "Terminal",
+// Step4 (extra fields)
+"step4.baggage": "Baggage count",
+"step4.note": "Note",
+"step4.acceptPolicy": "I accept the reservation & cancellation policy",
+"step4.acceptKvkk": "I have read and accept the privacy notice",
+"step4.acceptComms": "I would like to receive offers and updates (optional)",
+
     "header.links.services": "Services",
     "header.links.fleet": "Fleet",
     "header.links.myReservation": "My Reservation",
     "header.cta.whatsapp": "WhatsApp",
     "header.cta.book": "Book Now",
 
-    "home.hero.title": "VIP Transfer in Antalya",
-    "home.hero.subtitle": "Comfortable, safe, and on time. Airport, hotel or city rides.",
-    "home.hero.cta": "Start Reservation",
-    "home.services.title": "Our Services",
-    "home.fleet.title": "Our Fleet",
 
     "footer.about": "Professional VIP transfer in Antalya. Experienced drivers, insured transport, transparent pricing.",
     "footer.quick": "Quick Links",
@@ -212,21 +307,90 @@ const dictionaries = {
     "feature.ac": "A/C",
     "feature.water": "Water",
     "feature.luggage": "Luggage",
+
+
+    "about.title":"About Us",
+"about.p1":"Sonnenlicht VIP Transfer provides chauffeur-driven transfers in Antalya and nearby regions.",
+"about.p2":"Our priorities are safety, punctuality and comfort. We track flights and greet guests on time.",
+"about.p3":"For both corporate and individual needs, we offer flexible solutions tailored to you.",
+"about.contact":"Contact",
+"faq.title":"Frequently Asked Questions",
+"faq.q1":"What is included in the price?",
+"faq.a1":"Private driver, vehicle, fuel and standard insurance are included. Parking/special tolls and extras are not included.",
+"faq.q2":"Do you provide a baby seat?",
+"faq.a2":"Yes, one baby seat is free. Please mention additional seats during reservation.",
+"faq.q3":"What if my flight is delayed?",
+"faq.a3":"We track your flight and adjust pickup without extra fees within reasonable waiting terms.",
+"faq.q4":"How is pricing determined?",
+"faq.a4":"Based on route and vehicle type; we share the final amount before confirmation.",
+"policies.cancel.title":"Cancellation Policy",
+"policies.cancel.intro":"The following rules apply to cancellations:",
+"policies.cancel.p1":"Free cancellation up to 24 hours before transfer time.",
+"policies.cancel.p2":"50% charge for cancellations within 24 hours.",
+"policies.cancel.p3":"No-show is charged in full.",
+"policies.cancel.p4":"We accommodate change requests whenever possible.",
+"policies.cancel.notice":"This is a sample text; if your contract differs, please inform us.",
+"policies.kvkk.title":"Privacy Notice",
+"policies.kvkk.intro":"We process and protect your personal data in compliance with applicable laws.",
+"policies.kvkk.sec1.t":"Data Categories",
+"policies.kvkk.sec1.p":"Identity and contact info, booking/transfer details, invoicing and logs.",
+"policies.kvkk.sec2.t":"Purposes of Processing",
+"policies.kvkk.sec2.p":"Service delivery, booking management, billing, legal obligations and customer relations.",
+"policies.kvkk.sec3.t":"Retention & Your Rights",
+"policies.kvkk.sec3.p":"Data is retained for statutory periods. You may exercise access/rectification/erasure rights.",
+"policies.kvkk.notice":"This text is informational; contact us for the latest version.",
+"header.links.about":"About",
+"header.links.faq":"FAQ",
+"header.links.contact":"Contact",
+
+"footer.links":"Links",
+"nav.reservation":"Reservation",
+"home.services.title":"Our Services",
+"home.fleet.title":"Our Fleet",
+"nav.about":"About",
+"nav.faq":"FAQ",
+"nav.cancelPolicy":"Cancellation Policy",
+"nav.privacy":"Privacy Notice",
+
   },
 
   /* ========================= GERMAN ========================= */
   de: {
+
+// Home hero & badges
+"home.badge.support": "24/7 Support",
+"home.badge.supportDesc": "Sofort per WhatsApp & Telefon erreichbar.",
+"home.badge.driver": "Profi-Fahrer",
+"home.badge.driverDesc": "Erfahren, freundlich, zuverlässig.",
+"home.badge.insured": "Versichert",
+"home.badge.insuredDesc": "Sicherheit für Fahrzeug & Passagiere.",
+"home.badge.ontime": "Pünktlich",
+"home.badge.ontimeDesc": "Flugverfolgung & pünktliche Abholung.",
+// Home services
+"home.svc.airport": "Flughafentransfer",
+"home.svc.hotel": "Hoteltransfer",
+"home.svc.city": "Stadttransfer",
+"home.svc.tour": "Private Touren",
+// Fleet
+"home.fleet.cta": "Jetzt buchen",
+
+
+// Step1 (Fluginfo)
+"step1.flightNo": "Flugnummer",
+"step1.terminal": "Terminal",
+// Step4 (Zusatzfelder)
+"step4.baggage": "Gepäckanzahl",
+"step4.note": "Hinweis",
+"step4.acceptPolicy": "Ich akzeptiere die Reservierungs- & Stornobedingungen",
+"step4.acceptKvkk": "Ich habe die Datenschutzhinweise gelesen und stimme zu",
+"step4.acceptComms": "Ich möchte Angebote & Updates erhalten (optional)",
+
     "header.links.services": "Leistungen",
     "header.links.fleet": "Fuhrpark",
     "header.links.myReservation": "Meine Buchung",
     "header.cta.whatsapp": "WhatsApp",
     "header.cta.book": "Jetzt buchen",
 
-    "home.hero.title": "VIP Transfer in Antalya",
-    "home.hero.subtitle": "Komfortabel, sicher und pünktlich. Flughafen, Hotel oder Stadtfahrten.",
-    "home.hero.cta": "Buchung starten",
-    "home.services.title": "Unsere Leistungen",
-    "home.fleet.title": "Unsere Flotte",
 
     "footer.about": "Professioneller VIP-Transfer in Antalya. Erfahrene Fahrer, versicherte Beförderung, transparente Preise.",
     "footer.quick": "Schnelle Links",
@@ -309,21 +473,88 @@ const dictionaries = {
     "feature.ac": "Klimaanlage",
     "feature.water": "Wasser",
     "feature.luggage": "Gepäck",
+
+    "about.title":"Über uns",
+"about.p1":"Sonnenlicht VIP Transfer bietet Chauffeur-Transfers in Antalya und Umgebung.",
+"about.p2":"Priorität: Sicherheit, Pünktlichkeit und Komfort. Wir verfolgen Flüge und empfangen Gäste rechtzeitig.",
+"about.p3":"Für Firmen und Privatkunden liefern wir flexible, bedarfsgerechte Lösungen.",
+"about.contact":"Kontakt",
+"faq.title":"Häufige Fragen",
+"faq.q1":"Was ist im Preis enthalten?",
+"faq.a1":"Fahrer, Fahrzeug, Kraftstoff und Standardversicherung sind inklusive. Park-/Sondergebühren und Extras nicht.",
+"faq.q2":"Gibt es einen Kindersitz?",
+"faq.a2":"Ja, ein Sitz ist kostenlos. Weitere bitte bei der Buchung angeben.",
+"faq.q3":"Was passiert bei Flugverspätung?",
+"faq.a3":"Wir verfolgen Ihren Flug und passen die Abholung innerhalb angemessener Wartezeit ohne Aufpreis an.",
+"faq.q4":"Wie erfolgt die Preisbildung?",
+"faq.a4":"Nach Strecke und Fahrzeugtyp; den Endpreis teilen wir vor Bestätigung mit.",
+"policies.cancel.title":"Stornobedingungen",
+"policies.cancel.intro":"Für Stornierungen gelten folgende Regeln:",
+"policies.cancel.p1":"Kostenlose Stornierung bis 24 Stunden vor Abfahrt.",
+"policies.cancel.p2":"50 % Gebühr bei Stornierung innerhalb von 24 Stunden.",
+"policies.cancel.p3":"No-Show wird vollständig berechnet.",
+"policies.cancel.p4":"Änderungswünsche erfüllen wir nach Möglichkeit.",
+"policies.cancel.notice":"Beispieltext; teilen Sie uns abweichende Vertragsbedingungen mit.",
+"policies.kvkk.title":"Datenschutzhinweis",
+"policies.kvkk.intro":"Wir verarbeiten und schützen Ihre Daten gemäß geltendem Recht.",
+"policies.kvkk.sec1.t":"Datenkategorien",
+"policies.kvkk.sec1.p":"Identitäts-/Kontaktdaten, Buchungs-/Transferdetails, Abrechnung, Logs.",
+"policies.kvkk.sec2.t":"Verarbeitungszwecke",
+"policies.kvkk.sec2.p":"Leistungserbringung, Buchungsverwaltung, Abrechnung, gesetzliche Pflichten, Kundenbeziehung.",
+"policies.kvkk.sec3.t":"Aufbewahrung & Rechte",
+"policies.kvkk.sec3.p":"Speicherung gem. gesetzlichen Fristen. Sie haben Auskunfts-/Berichtigungs-/Löschrechte.",
+"policies.kvkk.notice":"Dieser Text dient der Information; für die aktuelle Fassung kontaktieren Sie uns.",
+"header.links.about":"Über uns",
+"header.links.faq":"FAQ",
+"header.links.contact":"Kontakt",
+
+"footer.links":"Links",
+"nav.reservation":"Buchung",
+"home.services.title":"Leistungen",
+"home.fleet.title":"Fuhrpark",
+"nav.about":"Über uns",
+"nav.faq":"FAQ",
+"nav.cancelPolicy":"Stornobedingungen",
+"nav.privacy":"Datenschutzhinweis",
   },
 
   /* ========================= RUSSIAN ========================= */
   ru: {
+
+// Home hero & badges
+"home.badge.support": "Поддержка 24/7",
+"home.badge.supportDesc": "Связь по WhatsApp и телефону.",
+"home.badge.driver": "Профессиональные водители",
+"home.badge.driverDesc": "Опытные, отзывчивые, надёжные.",
+"home.badge.insured": "Застраховано",
+"home.badge.insuredDesc": "Безопасность пассажиров и авто прежде всего.",
+"home.badge.ontime": "Точно вовремя",
+"home.badge.ontimeDesc": "Отслеживание рейса и своевременная встреча.",
+// Home services
+"home.svc.airport": "Трансфер из аэропорта",
+"home.svc.hotel": "Трансфер в отель",
+"home.svc.city": "Городской трансфер",
+"home.svc.tour": "Индивидуальные туры",
+// Fleet
+"home.fleet.cta": "Забронировать",
+
+
+// Step1 (рейс)
+"step1.flightNo": "Номер рейса",
+"step1.terminal": "Терминал",
+// Step4 (доп поля)
+"step4.baggage": "Количество багажа",
+"step4.note": "Примечание",
+"step4.acceptPolicy": "Я принимаю условия бронирования и отмены",
+"step4.acceptKvkk": "Я прочитал(а) и принимаю уведомление о конфиденциальности",
+"step4.acceptComms": "Хочу получать предложения и новости (необязательно)",
+
     "header.links.services": "Услуги",
     "header.links.fleet": "Автопарк",
     "header.links.myReservation": "Моё бронирование",
     "header.cta.whatsapp": "WhatsApp",
     "header.cta.book": "Забронировать",
 
-    "home.hero.title": "VIP-трансфер в Анталье",
-    "home.hero.subtitle": "Комфортно, безопасно и вовремя. Аэропорт, отель или поездки по городу.",
-    "home.hero.cta": "Начать бронирование",
-    "home.services.title": "Наши услуги",
-    "home.fleet.title": "Наш автопарк",
 
     "footer.about": "Профессиональный VIP-трансфер в Анталье. Опытные водители, страхование и прозрачные цены.",
     "footer.quick": "Быстрые ссылки",
@@ -406,6 +637,50 @@ const dictionaries = {
     "feature.ac": "Кондиционер",
     "feature.water": "Вода",
     "feature.luggage": "Багаж",
+
+    "about.title":"О нас",
+"about.p1":"Sonnenlicht VIP Transfer — частные трансферы с водителем в Анталье и регионе.",
+"about.p2":"Наши приоритеты: безопасность, пунктуальность и комфорт. Отслеживаем рейсы и встречаем вовремя.",
+"about.p3":"Для компаний и частных клиентов предлагаем гибкие решения под задачу.",
+"about.contact":"Контакты",
+"faq.title":"Частые вопросы",
+"faq.q1":"Что входит в стоимость?",
+"faq.a1":"Водитель, автомобиль, топливо и стандартная страховка. Парковка/платные дороги и доп. услуги — отдельно.",
+"faq.q2":"Есть ли детское кресло?",
+"faq.a2":"Да, одно кресло бесплатно. Доп. кресла укажите при бронировании.",
+"faq.q3":"Что если рейс задерживается?",
+"faq.a3":"Мы отслеживаем рейс и корректируем встречу без доплаты в разумных пределах ожидания.",
+"faq.q4":"Как формируется цена?",
+"faq.a4":"По маршруту и типу авто; финальную сумму сообщаем до подтверждения.",
+"policies.cancel.title":"Правила отмены",
+"policies.cancel.intro":"Для отмен применяются следующие условия:",
+"policies.cancel.p1":"Бесплатная отмена за 24 часа до трансфера.",
+"policies.cancel.p2":"50% при отмене менее чем за 24 часа.",
+"policies.cancel.p3":"No-show оплачивается полностью.",
+"policies.cancel.p4":"По возможности принимаем запросы на изменение.",
+"policies.cancel.notice":"Это пример текста; если условия иные, сообщите нам.",
+"policies.kvkk.title":"Уведомление о конфиденциальности",
+"policies.kvkk.intro":"Мы обрабатываем и защищаем персональные данные по применимому законодательству.",
+"policies.kvkk.sec1.t":"Категории данных",
+"policies.kvkk.sec1.p":"Идентификация и контакты, детали бронирования/трансфера, счета, журналы.",
+"policies.kvkk.sec2.t":"Цели обработки",
+"policies.kvkk.sec2.p":"Оказание услуг, управление бронированиями, биллинг, правовые обязанности, отношения с клиентами.",
+"policies.kvkk.sec3.t":"Хранение и ваши права",
+"policies.kvkk.sec3.p":"Хранение в сроки, установленные законом. Права на доступ/исправление/удаление сохраняются.",
+"policies.kvkk.notice":"Текст информационный; за актуальной версией свяжитесь с нами.",
+"header.links.about":"О нас",
+"header.links.faq":"FAQ",
+"header.links.contact":"Контакты",
+
+"footer.links":"Ссылки",
+"nav.reservation":"Бронирование",
+"home.services.title":"Услуги",
+"home.fleet.title":"Автопарк",
+"nav.about":"О нас",
+"nav.faq":"FAQ",
+"nav.cancelPolicy":"Правила отмены",
+"nav.privacy":"Уведомление о конфиденциальности",
+
   },
 } satisfies Record<Lang, Record<string, string>>;
 

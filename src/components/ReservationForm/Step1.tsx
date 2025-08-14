@@ -15,6 +15,9 @@ interface Step1Props {
     email?: string;
     date?: string; // "YYYY-MM-DD"
     time?: string; // "HH:mm"
+  
+    flightNo?: string;
+    terminal?: string;
   };
   updateData: (patch: Partial<Step1Props["formData"]>) => void;
   nextStep: () => void;

@@ -149,6 +149,7 @@ export default function Wizard() {
           submitted={submitted}
           pnr={pnr}
           rid={rid}
+          updateData={setFormData}
         />
       )}
     </div>

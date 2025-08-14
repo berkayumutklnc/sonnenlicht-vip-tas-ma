@@ -21,9 +21,18 @@ type ReservationFormDataStep4 = {
   email: string;
   vehicleType?: VehicleType;
   price?: number | null;
+
+  flightNo?: string;
+  terminal?: string;
+  baggageCount?: number;
+  note?: string;
+  acceptPolicy?: boolean;
+  acceptKvkk?: boolean;
+  acceptComms?: boolean;
 };
 
 type Step4Props = {
+  updateData?: (patch: Partial<ReservationFormDataStep4>) => void;
   formData: ReservationFormDataStep4;
   prevStep: () => void;
   onSubmit?: () => Promise<void> | void;
@@ -39,6 +48,7 @@ export default function Step4({
   submitted,
   pnr,
   rid,
+  updateData,
 }: Step4Props) {
   const { t } = useI18nPublic();
   const [loading, setLoading] = useState(false);
@@ -83,6 +93,13 @@ export default function Step4({
       const startAt = Date.UTC(y, m - 1, d, H, M);
 
       await createReservation({
+        flightNo: formData.flightNo,
+        terminal: formData.terminal,
+        baggageCount: formData.baggageCount,
+        note: formData.note,
+        acceptPolicy: !!formData.acceptPolicy,
+        acceptKvkk: !!formData.acceptKvkk,
+        acceptComms: !!formData.acceptComms,
         from: formData.from,
         to: formData.to,
         date: formData.date,
@@ -190,6 +207,80 @@ export default function Step4({
           }
         />
       </div>
+
+
+{/* Ek alanlar */}
+<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+  <div>
+    <label className="block text-sm text-white/70 mb-1">{t("step4.baggage")}</label>
+    <input
+      type="number"
+      min={0}
+      value={formData.baggageCount ?? 0}
+      onChange={(e) => updateData && updateData({ baggageCount: Math.max(0, Number(e.target.value||0)) })}
+      className="w-full rounded-md bg-neutral-900 border border-white/10 px-3 py-2"
+    />
+  </div>
+  <div>
+    <label className="block text-sm text-white/70 mb-1">{t("step1.flightNo")} / {t("step1.terminal")}</label>
+    <div className="grid grid-cols-2 gap-2">
+      <input
+        type="text"
+        value={formData.flightNo || ""}
+        onChange={(e) => updateData && updateData({ flightNo: e.target.value.toUpperCase().trim() })}
+        placeholder="XQ123"
+        className="rounded-md bg-neutral-900 border border-white/10 px-3 py-2"
+      />
+      <select
+        value={formData.terminal || ""}
+        onChange={(e) => updateData && updateData({ terminal: e.target.value })}
+        className="rounded-md bg-neutral-900 border border-white/10 px-3 py-2"
+      >
+        <option value="">-</option>
+        <option value="T1">T1</option>
+        <option value="T2">T2</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div>
+  <label className="block text-sm text-white/70 mb-1">{t("step4.note")}</label>
+  <textarea
+    value={formData.note || ""}
+    onChange={(e) => updateData && updateData({ note: e.target.value })}
+    rows={3}
+    className="w-full rounded-md bg-neutral-900 border border-white/10 px-3 py-2"
+  />
+</div>
+
+{/* Onay kutuları */}
+<div className="space-y-2">
+  <label className="flex items-start gap-2 text-sm">
+    <input
+      type="checkbox"
+      checked={!!formData.acceptPolicy}
+      onChange={(e) => updateData && updateData({ acceptPolicy: e.target.checked })}
+    />
+    <span>{t("step4.acceptPolicy")}</span>
+  </label>
+  <label className="flex items-start gap-2 text-sm">
+    <input
+      type="checkbox"
+      checked={!!formData.acceptKvkk}
+      onChange={(e) => updateData && updateData({ acceptKvkk: e.target.checked })}
+    />
+    <span>{t("step4.acceptKvkk")}</span>
+  </label>
+  <label className="flex items-start gap-2 text-sm">
+    <input
+      type="checkbox"
+      checked={!!formData.acceptComms}
+      onChange={(e) => updateData && updateData({ acceptComms: e.target.checked })}
+    />
+    <span>{t("step4.acceptComms")}</span>
+  </label>
+</div>
 
       <div className="flex items-center justify-between">
         <button onClick={prevStep} type="button" className="px-4 py-2 rounded bg-neutral-700 hover:bg-neutral-600">

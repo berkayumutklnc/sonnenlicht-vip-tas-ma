@@ -13,30 +13,44 @@ export interface ReservationFormData {
   phone: string;
   email: string;
 
-  vehicleType?: VehicleType;
-  price?: number | null; // computed
+  // Optional / advanced fields
+  flightNo?: string | null;
+  terminal?: string | null;
+  baggageCount?: number | null;
+  note?: string | null;
+  acceptPolicy?: boolean | null;
+  acceptKvkk?: boolean | null;
+  acceptComms?: boolean | null;
 }
 
-export interface ReservationRecord extends ReservationFormData {
-  id: string; // TRF-XXXXX
-  createdAt: number; // epoch ms
-  status: "pending" | "confirmed" | "canceled";
-  // notes?: string;
-}
-
-export const LOCATIONS = [
-  "Antalya Havalimanı (AYT)",
-  "Antalya şehir merkezi",
-  "Belek",
-  "Kemer",
-  "Lara",
-  "Side",
-  "Alanya",
-];
-
-export const VEHICLES: { id: VehicleType; title: string; seats: number; bags: number }[] = [
-  { id: "vip-6",  title: "VIP Minivan (6 Koltuk)",  seats: 6,  bags: 4 },
-  { id: "vip-10", title: "VIP Minibus (10 Koltuk)", seats: 10, bags: 8 },
+// Basit tip: ana sayfa “Araç Filomuz” ve Step3 için
+export const VEHICLES: { 
+  id: VehicleType; 
+  title: string; 
+  seats: number; 
+  bags: number; 
+  image?: string; 
+  features?: string[];
+  basePriceEur?: number;
+}[] = [
+  { 
+    id: "vip-6", 
+    title: "VIP Minivan (6 Koltuk)", 
+    seats: 6, 
+    bags: 4,
+    image: "/vehicles/vip-6.jpg",
+    features: ["Wi‑Fi", "USB", "Klima", "Su", "4× Bagaj"],
+    basePriceEur: 65
+  },
+  { 
+    id: "vip-10", 
+    title: "VIP Minibus (10 Koltuk)", 
+    seats: 10, 
+    bags: 8,
+    image: "/vehicles/vip-10.jpg",
+    features: ["Wi‑Fi", "USB", "Klima", "Su", "8× Bagaj"],
+    basePriceEur: 90
+  },
 ];
 
 export function genPNR() {

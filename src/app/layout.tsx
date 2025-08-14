@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import GA from "@/components/GA";
 import { I18nPublicProvider } from "@/lib/i18n-public";
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex-1 max-w-6xl mx-auto w-full p-4">{children}</main>
           <Footer />
           <WhatsAppButton />
+          <GA />
         </I18nPublicProvider>
       </body>
     </html>

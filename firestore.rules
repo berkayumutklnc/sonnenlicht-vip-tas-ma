@@ -1,108 +1,68 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-
+    function isAuthed() { return request.auth != null; }
     function isAdmin() {
-      return request.auth != null &&
-             request.auth.uid in ["8FpZcNnZ0MSMQ0KiSuoQcdvctYh2"]; // <-- senin UID
+      // Admin whitelist: create docs under admins/{uid}
+      return isAuthed() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
     }
 
-    // VEHICLES: public read, admin full write
-    match /vehicles/{vid} {
+    // ----------------- RESERVATIONS (private, full data) -----------------
+    match /reservations/{id} {
+      // Admin sees everything
+      allow read: if isAdmin();
+
+      // Anyone can create a reservation, but only with safe fields
+      allow create: if
+        request.resource.id == request.resource.data.code &&
+        request.resource.data.status == "pending" &&
+        request.resource.data.acceptPolicy == true &&
+        request.resource.data.acceptKvkk == true &&
+        // Disallow admin-only/server-only fields from client
+        !("driverName" in request.resource.data) &&
+        !("driverPhone" in request.resource.data) &&
+        !("plate" in request.resource.data) &&
+        !("vehicleId" in request.resource.data) &&
+        !("cancel" in request.resource.data);
+
+      // Mutations only by admin
+      allow update, delete: if isAdmin();
+    }
+
+    // --------------- PUBLIC MIRROR (readable by everyone) ----------------
+    match /reservations_public/{id} {
       allow read: if true;
-      allow create, update, delete, write: if isAdmin();
+
+      // Allow client to create a public mirror at creation time; updates by admin only
+      allow create: if
+        request.resource.id == request.resource.data.code &&
+        request.resource.data.status == "pending";
+      allow update, delete: if isAdmin();
     }
 
-    // RESERVATIONS: public create, admin full kontrol
-    match /reservations/{code} {
-      // Herkese tekil get (debug/lookup için)
-      allow get: if true;
-
-      // Admin listeleme ve tüm yazma izinleri
-      allow list, create, update, delete, write: if isAdmin();
-
-      // Public create (ödemesiz rezervasyon) — admin değilken
-      allow create: if
-        !isAdmin() &&
-        (
-          // Doküman ID doğrulaması: id veya code alanından biri doc id ile aynı olmalı
-          ((request.resource.data.id is string && request.resource.data.id == code) ||
-           (request.resource.data.code is string && request.resource.data.code == code))
-        ) &&
-        // Temel alanlar
-        request.resource.data.from is string &&
-        request.resource.data.to is string &&
-        request.resource.data.date is string &&
-        request.resource.data.time is string &&
-        (request.resource.data.startAt is int || request.resource.data.startAt is float) &&
-        request.resource.data.fullName is string &&
-        request.resource.data.phone is string &&
-        request.resource.data.email is string;
-
-      // --- KULLANICI İPTAL TALEBİ (AUTH'SUZ) ---
-      // Yalnızca 'cancel' alanını (requested=true, reason, requestedAt) ve 'updatedAt' alanını güncelleyebilir.
-      // Diğer tüm alanlar KESİNLİKLE aynen kalmalıdır.
-      // Ayrıca kalkışa >= 12 saat varsa izin verilir.
-      allow update: if
-        !isAdmin() &&
-
-        // Değişmemesi gereken alanların sabitliği
-        request.resource.data.from == resource.data.from &&
-        request.resource.data.to == resource.data.to &&
-        request.resource.data.date == resource.data.date &&
-        request.resource.data.time == resource.data.time &&
-        request.resource.data.startAt == resource.data.startAt &&
-        request.resource.data.fullName == resource.data.fullName &&
-        request.resource.data.phone == resource.data.phone &&
-        request.resource.data.email == resource.data.email &&
-        request.resource.data.status == resource.data.status &&
-        request.resource.data.vehicleType == resource.data.vehicleType &&
-        request.resource.data.vehicleId == resource.data.vehicleId &&
-        request.resource.data.plate == resource.data.plate &&
-        request.resource.data.driverName == resource.data.driverName &&
-        request.resource.data.driverPhone == resource.data.driverPhone &&
-        request.resource.data.price == resource.data.price &&
-        request.resource.data.createdAt == resource.data.createdAt &&
-
-        // Sadece cancel + updatedAt değişebilir
-        request.resource.data.cancel.requested == true &&
-        (request.resource.data.cancel.reason is string || request.resource.data.cancel.reason == null) &&
-        (request.resource.data.cancel.requestedAt is int || request.resource.data.cancel.requestedAt is float) &&
-        (request.resource.data.cancel.canceledAt == null) &&
-        (request.resource.data.updatedAt is int || request.resource.data.updatedAt is float) &&
-
-        // Kalkışa >= 12 saat
-        (resource.data.startAt - request.time.toMillis()) >= 12 * 60 * 60 * 1000;
+    // -------- PNR mapping (code -> rid), read-only for public ----------
+    match /pnr/{id} {
+      allow read: if true;
+      // Client can create mapping for its own code
+      allow create: if request.resource.id == request.resource.data.rid;
+      allow update, delete: if isAdmin();
     }
 
-    // PNR: public get + public create (mapping), admin delete/update
-    match /pnr/{pid} {
-      allow get: if true;
-
-      // public create (mapping: rid == pid)
-      allow create: if
-        (request.resource.data.rid is string && request.resource.data.rid == pid) &&
-        (request.resource.data.createdAt is int || request.resource.data.createdAt is float);
-
-      // admin tam yetki
-      allow update, delete, write: if isAdmin();
+    // --------------------------- VEHICLES -------------------------------
+    match /vehicles/{id} {
+      allow read: if true;          // needed for Step3 catalog
+      allow write: if isAdmin();    // only admin edits vehicles & blocks
     }
 
-    // RESERVATIONS_PUBLIC (opsiyonel özet)
-    match /reservations_public/{pid} {
-      allow get: if true;
-      allow update, delete, write: if isAdmin();
+    // --------------------------- ADMINS ---------------------------------
+    // You maintain a document per admin uid under admins/{uid}.
+    match /admins/{uid} {
+      allow read, write: if isAdmin();
+    }
 
-      // public create (özet kayıt)
-      allow create: if
-        request.resource.data.code is string &&
-        request.resource.data.email is string &&
-        request.resource.data.status is string &&
-        request.resource.data.from is string &&
-        request.resource.data.to is string &&
-        request.resource.data.date is string &&
-        request.resource.data.time is string &&
-        (request.resource.data.startAt is int || request.resource.data.startAt is float);
+    // ------------------------- DEFAULT DENY -----------------------------
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }
